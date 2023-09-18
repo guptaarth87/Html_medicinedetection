@@ -26,20 +26,48 @@
         maxPredictions = model.getTotalClasses();
 
         // Convenience function to setup a webcam
-        const flip = true; // whether to flip the webcam
-        const width = 200;
-         const height = 200;
-        const constraints = {
+//         const flip = true; // whether to flip the webcam
+//         const width = 200;
+//          const height = 200;
+//         const constraints = {
+//   video: {
+//     facingMode: { ideal: 'environment' }, // Specify 'environment' for the back camera
+//     width: { ideal: width },
+//     height: { ideal: height },
+//   },
+// };
+//         webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+//         const stream = await navigator.mediaDevices.getUserMedia(constraints);
+//         await webcam.setup(stream); // request access to the webcam
+//         await webcam.play();
+const flip = true; // whether to flip the webcam
+const width = 200;
+const height = 200;
+
+const constraints = {
   video: {
     facingMode: { ideal: 'environment' }, // Specify 'environment' for the back camera
     width: { ideal: width },
     height: { ideal: height },
   },
 };
-        webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
-        const stream = await navigator.mediaDevices.getUserMedia(constraints);
-        await webcam.setup(stream); // request access to the webcam
-        await webcam.play();
+
+
+  try {
+    if (navigator.mediaDevices.getSupportedConstraints().facingMode.includes('environment')) {
+      const stream = await navigator.mediaDevices.getUserMedia(constraints);
+      webcam.setup(stream);
+      webcam.play();
+    } else {
+      console.error('Back camera not supported on this device/browser.');
+    }
+  } catch (error) {
+    console.error('Error setting up the webcam:', error);
+  }
+
+
+// Call the setupWebcam function to start the webcam
+
         window.requestAnimationFrame(loop);
 
         // append elements to the DOM
