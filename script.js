@@ -2,6 +2,16 @@
 let model;
 // const modelURL = "https://teachablemachine.withgoogle.com/models/RI_wubqTe/model.json"; // Replace with your model URL
 // const metadataURL = "https://teachablemachine.withgoogle.com/models/RI_wubqTe/metadata.json"; // Replace with your metadata URL
+// import plantData from './Details.js';
+
+let plantData  = {
+    "turmeric":{
+        "name":"Turmeric",
+        "scientific_name": "Curcuma longa",
+        "specie_locations": "India , Nepal",
+        "description": "Turmeric is a flowering plant native to Southeast Asia, known for its bright yellow or orange rhizomes. It belongs to the ginger family, Zingiberaceae. Turmeric is widely used as a spice and a traditional medicine. It is known for its anti-inflammatory and antioxidant properties and is a key ingredient in many Asian dishes."
+    }
+}
 
 // Get references to HTML elements
 const imageInput = document.getElementById('imageInput');
@@ -41,6 +51,7 @@ async function loadModel() {
    
     model = await tmImage.load(modelURL, metadataURL);
     console.log('Model loaded successfully');
+    // console.log(plantData);
     loaderContainer.style.display = 'none';
 }
 function extractObjectWithHighestProbability(objects) {
@@ -91,11 +102,19 @@ async function predictImage() {
             
             const highestProbabilityObject = extractObjectWithHighestProbability(prediction);
             console.log(highestProbabilityObject);
+            let plant =highestProbabilityObject.className;
+            let speciesObject = `plantData.${plant}`
+            console.log(plantData.plant);
+            
+            highest_prediction.innerText = JSON.stringify(`predicted specie - ${highestProbabilityObject.className}`);
+            highest_probability.innerText = JSON.stringify(`probability - ${highestProbabilityObject.probability}`);
+            speciesName.innerText = JSON.stringify(`${speciesObject.name}`);
+            scientificName.innerText = JSON.stringify(`${speciesObject.scientific_name}`);
+            specieLocations.innerText = JSON.stringify(`${speciesObject.specie_locations}`);
+            specieDetails.innerText = JSON.stringify(`${speciesObject.description}`);
 
-            highest_prediction.innerText = JSON.stringify(highestProbabilityObject.className);
-            highest_probability.innerText = JSON.stringify(highestProbabilityObject.probability);
-           
-            predictionResult.innerText = JSON.stringify(prediction, null, 2);
+
+            // predictionResult.innerText = JSON.stringify(prediction, null, 2);
             loaderContainer.style.display = 'none';
         } catch (error) {
             console.error('Error predicting image:', error);
@@ -106,3 +125,4 @@ async function predictImage() {
 
 // Initialize the model when the page loads
 window.addEventListener('load', loadModel);
+
