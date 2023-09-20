@@ -5,30 +5,51 @@ let model;
 // import plantData from './Details.js';
 
 let plantData  = {
-    "turmeric": {
-        "name": "Turmeric",
-        "scientific_name": "Curcuma longa",
-        "specie_locations": "Native to South Asia, primarily India",
-        "description": "Turmeric is a flowering plant known for its rhizomes, which are used to make the bright yellow spice. It has a long history of medicinal and culinary use and is prized for its anti-inflammatory properties."
-      },
-    "mint":{
-        "name": "Mint",
-        "scientific_name": "Mentha",
-        "specie_locations": "Widely distributed across Europe, Asia, Africa, and the Americas",
-        "description": "Mint is a fragrant herb known for its refreshing flavor. It is commonly used in cooking, beverages, and herbal teas. Mint leaves are also valued for their medicinal properties."
-      },
-    "camphor":{
-        "name": "Camphor",
-        "scientific_name": "Cinnamomum camphora",
-        "specie_locations": "Native to East Asia, particularly China, Japan, and Taiwan",
-        "description": "Camphor is a tree known for its aromatic wood and leaves. Camphor oil extracted from its wood is used for various purposes, including medicinal, culinary, and as an insect repellent."
-      },
-    "tulsi":{
-        "name": "Tulsi",
-        "scientific_name": "Ocimum sanctum",
-        "specie_locations": "Native to the Indian subcontinent",
-        "description": "Tulsi, also known as Holy Basil, is a sacred herb in Hinduism. It is revered for its medicinal properties and is often used in traditional medicine and religious rituals."
-      }
+    
+  "aloe vera": {
+    "name": "Aloe Vera",
+    "scientific_name": "Aloe barbadensis miller",
+    "specie_locations": "Native to the Arabian Peninsula but cultivated worldwide",
+    "description": "Aloe vera is a succulent plant known for its gel-filled leaves, which are used for various medicinal and cosmetic purposes. It is valued for its soothing and healing properties."
+  },
+  "bamboo": {
+    "name": "Bamboo",
+    "scientific_name": "Bambusoideae",
+    "specie_locations": "Found in various regions, including Asia, Africa, and the Americas",
+    "description": "Bamboo is a fast-growing plant known for its tall, woody stems. It has a wide range of uses, including construction, furniture, and as a food source in some cultures."
+  },
+  "coriander": {
+    "name": "Coriander",
+    "scientific_name": "Coriandrum sativum",
+    "specie_locations": "Native to Southern Europe and Western Asia",
+    "description": "Coriander is an herb known for its aromatic leaves and seeds. It is a common spice in many cuisines and is also used for its medicinal properties."
+  },
+  "curry": {
+    "name": "Curry Plant",
+    "scientific_name": "Helichrysum italicum",
+    "specie_locations": "Native to the Mediterranean region",
+    "description": "The curry plant, not to be confused with curry spices, is an aromatic herb known for its silver-gray foliage and pleasant scent. It is used in perfumes and aromatherapy."
+  },
+  "mint": {
+    "name": "Mint",
+    "scientific_name": "Mentha",
+    "specie_locations": "Widely distributed across Europe, Asia, Africa, and the Americas",
+    "description": "Mint is a fragrant herb known for its refreshing flavor. It is commonly used in cooking, beverages, and herbal teas. Mint leaves are also valued for their medicinal properties."
+  },
+  "tamarind": {
+    "name": "Tamarind",
+    "scientific_name": "Tamarindus indica",
+    "specie_locations": "Native to tropical Africa but cultivated in various tropical regions",
+    "description": "Tamarind is a fruit-bearing tree known for its sweet and tangy pulp. It is used in cooking, beverages, and traditional medicine."
+  },
+  "tulsi": {
+    "name": "Tulsi",
+    "scientific_name": "Ocimum sanctum",
+    "specie_locations": "Native to the Indian subcontinent",
+    "description": "Tulsi, also known as Holy Basil, is a sacred herb in Hinduism. It is revered for its medicinal properties and is often used in traditional medicine and religious rituals."
+  
+}
+
 }
 
 // Get references to HTML elements
@@ -62,8 +83,8 @@ imageInput.addEventListener('change', (event) => {
 
 async function loadModel() {
     loaderContainer.style.display = 'flex';
-    const modelURL = "https://teachablemachine.withgoogle.com/models/RI_wubqTe/model.json"; // Replace with your model URL
-    const metadataURL = "https://teachablemachine.withgoogle.com/models/RI_wubqTe/metadata.json"; // Replace with your metadata URL
+    const modelURL = "https://teachablemachine.withgoogle.com/models/7fywPXKXJ/model.json"; // Replace with your model URL
+    const metadataURL = "https://teachablemachine.withgoogle.com/models/7fywPXKXJ/metadata.json"; // Replace with your metadata URL
 
     // const modelURL = './model.json';
    
