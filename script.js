@@ -5,12 +5,30 @@ let model;
 // import plantData from './Details.js';
 
 let plantData  = {
-    "turmeric":{
-        "name":"Turmeric",
+    "turmeric": {
+        "name": "Turmeric",
         "scientific_name": "Curcuma longa",
-        "specie_locations": "India , Nepal",
-        "description": "Turmeric is a flowering plant native to Southeast Asia, known for its bright yellow or orange rhizomes. It belongs to the ginger family, Zingiberaceae. Turmeric is widely used as a spice and a traditional medicine. It is known for its anti-inflammatory and antioxidant properties and is a key ingredient in many Asian dishes."
-    }
+        "specie_locations": "Native to South Asia, primarily India",
+        "description": "Turmeric is a flowering plant known for its rhizomes, which are used to make the bright yellow spice. It has a long history of medicinal and culinary use and is prized for its anti-inflammatory properties."
+      },
+    "mint":{
+        "name": "Mint",
+        "scientific_name": "Mentha",
+        "specie_locations": "Widely distributed across Europe, Asia, Africa, and the Americas",
+        "description": "Mint is a fragrant herb known for its refreshing flavor. It is commonly used in cooking, beverages, and herbal teas. Mint leaves are also valued for their medicinal properties."
+      },
+    "camphor":{
+        "name": "Camphor",
+        "scientific_name": "Cinnamomum camphora",
+        "specie_locations": "Native to East Asia, particularly China, Japan, and Taiwan",
+        "description": "Camphor is a tree known for its aromatic wood and leaves. Camphor oil extracted from its wood is used for various purposes, including medicinal, culinary, and as an insect repellent."
+      },
+    "tulsi":{
+        "name": "Tulsi",
+        "scientific_name": "Ocimum sanctum",
+        "specie_locations": "Native to the Indian subcontinent",
+        "description": "Tulsi, also known as Holy Basil, is a sacred herb in Hinduism. It is revered for its medicinal properties and is often used in traditional medicine and religious rituals."
+      }
 }
 
 // Get references to HTML elements
@@ -102,9 +120,11 @@ async function predictImage() {
             
             const highestProbabilityObject = extractObjectWithHighestProbability(prediction);
             console.log(highestProbabilityObject);
-            let plant =highestProbabilityObject.className;
-            let speciesObject = `plantData.${plant}`
-            console.log(plantData.plant);
+            let plant =highestProbabilityObject.className
+            let speciesObject = plantData[highestProbabilityObject.className]
+            console.log(speciesObject);
+            // console.log(plant)
+            // console.log(`plantData.${plant}`)
             
             highest_prediction.innerText = JSON.stringify(`predicted specie - ${highestProbabilityObject.className}`);
             highest_probability.innerText = JSON.stringify(`probability - ${highestProbabilityObject.probability}`);
