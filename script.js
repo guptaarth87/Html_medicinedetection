@@ -6,7 +6,7 @@ let model;
 
 let plantData  = {
     
-  "aloe vera": {
+  "alovera": {
     "name": "Aloe Vera",
     "scientific_name": "Aloe barbadensis miller",
     "specie_locations": "Native to the Arabian Peninsula but cultivated worldwide",
